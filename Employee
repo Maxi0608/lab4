@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public delegate void EmployeeInfo();
+public delegate double RaiseSalary(double bonus);
+
+namespace delegate1
+{
+    class Employee
+    {
+        private int id;
+        private string name;
+        private double salary;
+        private DateTime dateOfEmployment;
+
+        public Employee() { }
+
+        public Employee(int id, string name, double salary, DateTime dateOfEmployment)
+        {
+            this.id = id;
+            this.name = name;
+            this.salary = salary;
+            this.dateOfEmployment = dateOfEmployment;
+        }
+        #region Методы
+        public void Display()
+        {
+            Console.WriteLine("код - {1, 2} {0}" + "  дата приема - {2,2}.{3,2}.{4,4}" + "  зарплата {5,6}", name.PadRight(18), id, 
+                dateOfEmployment.Day, dateOfEmployment.Month, dateOfEmployment.Year, salary);
+        }
+        public double GiveBonus(double bonus)
+        {
+            return salary *= (1 + bonus);
+        }   
+        #endregion
+    }
+}
