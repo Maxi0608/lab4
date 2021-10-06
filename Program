@@ -26,7 +26,7 @@ namespace delegate1
             RaiseSalary raiseBonus2 = new RaiseSalary(emp4.GiveBonus);
             RaiseSalary raiseBonus3 = new RaiseSalary(emp6.GiveBonus);
 
-        
+        Sort salary=new Sort(Employee.SortBySalary);
             Console.WriteLine("Начисление премии: ");
 
             raiseBonus1(0.5);
@@ -35,6 +35,17 @@ namespace delegate1
             for (int i = 0; i < employees.Length; i++)
             {
                 employees[i]();
+            }
+
+            Employee[] empSort = new Employee[]
+            {
+                emp1, emp2, emp3, emp4, emp5, emp6
+            };
+            Console.WriteLine("Сортровка по зарплате:");
+            BubbleSort.Sort(empSort, salary);
+            for (int i = 0; i < employees.Length; i++)
+            {
+                empSort[i].Display();
             }
             Console.ReadLine();
         }
