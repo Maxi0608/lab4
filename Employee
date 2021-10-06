@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace delegate1
         private double salary;
         private DateTime dateOfEmployment;
 
-        public Employee() { }
+        public Employee()
+        {
+        }
 
         public Employee(int id, string name, double salary, DateTime dateOfEmployment)
         {
@@ -25,16 +28,31 @@ namespace delegate1
             this.salary = salary;
             this.dateOfEmployment = dateOfEmployment;
         }
+
         #region Методы
+
         public void Display()
         {
-            Console.WriteLine("код - {1, 2} {0}" + "  дата приема - {2,2}.{3,2}.{4,4}" + "  зарплата {5,6}", name.PadRight(18), id, 
+            Console.WriteLine("код - {1, 2} {0}" + "  дата приема - {2,2}.{3,2}.{4,4}" + "  зарплата {5,6}",
+                name.PadRight(18), id,
                 dateOfEmployment.Day, dateOfEmployment.Month, dateOfEmployment.Year, salary);
         }
+
         public double GiveBonus(double bonus)
         {
             return salary *= (1 + bonus);
-        }   
+        }
+
         #endregion
+
+        public static bool SortBySalary(object one, object two)
+        {
+            Employee empOne = (Employee) one;
+            Employee empTwo = (Employee) two;
+            return (empTwo.salary > empOne.salary) ? true : false;
+        }
+
+
+        
     }
 }
